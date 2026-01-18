@@ -1,0 +1,188 @@
+{
+  "layer": "top",
+  "position": "top",
+	"margin-left": 56,
+	"margin-right": 45,
+	"margin-top": 4,
+  "modules-left": [
+    "clock",
+		"custom/spotify",
+  ],
+
+  "modules-center": [
+		"power-profiles-daemon",
+    "hyprland/workspaces",
+		"tray",
+  ],
+
+  "modules-right": ["group/tray-expander","custom/diskspace","custom/ani-cli","custom/update","wireplumber","backlight","battery","custom/power",],
+
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+    },
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
+    }
+  },
+	"power-profiles-daemon": {
+		"format": "{icon}",
+		"tooltip-format": "Power profile: {profile}\nDriver : {driver}",
+		"tooltip": true,
+		"format-icons": {
+		"performance": "<span color='#c0669d'></span>",
+		"balanced": "<span color='#f38b28'> </span>",
+		"power-saver": "<span color='#3cb371'> </span>",
+		},
+		"on-click": "powerprofilesctl set power-save",
+		"on-click-right": "powerprofilesctl set performance",
+		"on-click-left": "powerprofilesctl set balanced",
+	},
+
+	"custom/update": {
+		"format": "💻",
+		"tooltip-format": "SUPER + H",
+		"on-click": "alacritty -e sh ~/.config/hypr/menu/update.sh",
+	},
+
+  "clock": {
+    "format": "{:%A %H:%M}",
+    "format-alt": "{:%d %B %Y}",
+    "tooltip": false,
+  },
+
+	"battery": {
+		"format": "<span color='#3cb371'>{capacity}%</span> <span color='#BF00FF'>{icon}</span>",
+		"format-icons": {
+				"charging": [
+						"󰢜",
+						"󰂆",
+						"󰂇",
+						"󰂈",
+						"󰢝",
+						"󰂉",
+						"󰢞",
+						"󰂊",
+						"󰂋",
+						"󰂅"
+				],
+				"default": [
+						"󰁺",
+						"󰁻",
+						"󰁼",
+						"󰁽",
+						"󰁾",
+						"󰁿",
+						"󰂀",
+						"󰂁",
+						"󰂂",
+						"󰁹"
+				]
+		},
+		"format-full": "Charged ",
+		"interval": 5,
+		"on-click": "alacritty -e battop"
+	},
+  "wireplumber": {
+    "format": "<span color='#fff999'>{icon}</span>",
+    "on-click": "pavucontrol",
+    "tooltip-format": "Playing at {volume}%",
+    "scroll-step": 1,
+    "format-muted": "󰝟",
+    "format-icons": {
+      "default": ["", "", ""],
+			"headphone": " ",
+			"headset": " ",
+    }
+  },
+  "group/tray-expander": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 1000,
+      "children-class": "tray-group-item"
+    },
+    "modules": [
+      "custom/expand-icon",
+			"custom/aur",
+			"custom/temperature",
+    ]
+  },
+
+  "custom/expand-icon": {
+    "format": " ",
+    "tooltip": false
+  },
+
+  "tray": {
+    "icon-size": 15,
+    "spacing": 15
+  },
+
+	"custom/power": {
+		"format": "<span color='#ff0371'>󰤆</span>",
+		"tooltip": true,
+		"on-click": "rofi -show power-menu -modi power-menu:rofi-power-menu",
+		"tooltip-format": "Power Menu"
+	},
+
+	"backlight":{
+		"device": "{}",
+		"exec": "ls /sys/class/backlight",
+		"format": "<span color='#f38b28'>{icon}</span>",
+		"tooltip-format": "Brightness: {}%",
+		"format-icons": ["", "", "", "", "", "", "", "", ""],
+		"on-click": "notify-send -t 4000 'Keep Your Brightness Level Between 20 to 30 to Save The Battery Life For Nearly 4 Hours'"
+	},
+
+	"custom/aur": {
+		"format": "<span color='#ff0371'> </span>{} ",
+		"exec": "pacman -Qu | wc -l",
+		"tooltip": false,
+		"interval": 5,
+	},
+
+	"custom/ani-cli":{
+		"on-click": "alacritty -e sh ~/.config/waybar/scripts/ani-cli.sh",
+		"format":"<span color='#ff0000'></span>",
+		"tooltip": false,
+	},
+
+	"custom/temperature": {
+		"exec": "sensors | awk '/^Package id 0:/ {print int($4)}'",
+		"format": "<span color='#FFA500'> </span>{}°C",
+		"interval": 2,
+		"tooltip": true,
+	},
+
+	"custom/spotify": {
+		"exec": "~/.config/waybar/scripts/spotify.sh",
+		"interval": 1,
+		"format": "{} ",
+		"max-length": 32,
+		"on-click": "playerctl -p spotify play-pause",
+	},
+
+	"custom/diskspace":{
+		"format": "<span color='#33cb37'></span>",
+		"interval": 200,
+		"exec": "~/.config/waybar/scripts/disk_script.sh",
+		"on-click": "alacritty -e ncdu / --exclude /media --exclude /run/timeshift",
+		"tooltip": false,
+	},
+
+
+}

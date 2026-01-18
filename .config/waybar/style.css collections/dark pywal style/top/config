@@ -1,0 +1,179 @@
+{
+    "layer": "top",
+    "position": "top",
+		"margin-top": 10,
+    "margin-left": 18,
+    "margin-right": 18,
+
+
+    "modules-left": ["custom/logo","hyprland/workspaces","group/tray_row",],
+    "modules-right": ["custom/ani-cli","power-profiles-daemon","memory","custom/diskspace","custom/temperature","backlight","wireplumber","battery","clock","custom/power",],
+    
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "on-click-right": "fullscreen",
+        "icon-theme": "papirus-icon-theme",
+        "icon-size": 45,
+        "tooltip-format": "{title}"
+    },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+				"disable-scroll": false,
+				"all-outputs": true,
+        "format-icons": {
+						"1": "1",
+						"2": "2",
+						"3": "3",
+						"4": "4",
+						"5": "5",
+						"6": "6",
+						"7": "7",
+						"8": "8",
+				},
+
+				"persistent-workspaces":{
+										"*": 8,
+					},
+
+    },
+
+		"tray":{
+				"spacing": 10,
+				"icon-size": 20,
+		},
+
+    "memory": {
+        "interval": 5,
+				"format": "<span color='#800000'> </span> {used:0.1f} GB",
+				"tooltip": true,
+				"on-click": "kitty btop",
+				"tooltip-format": " {used:0.1f}GB/{total:0.1f}GB"
+    },
+
+		"power-profiles-daemon": {
+				"format": "CPU {icon}",
+				"tooltip-format": "Power profile: {profile}\nDriver : {driver}",
+				"tooltip": true,
+				"format-icons": {
+				"performance": "<span color='#c0669d'> </span>",
+				"balanced": " <span color='#f38b28'></span>",
+				"power-saver": "<span color='#3cb371'> </span>",
+				},
+				"on-click": "powerprofilesctl set power-save",
+				"on-click-right": "powerprofilesctl set performance",
+				"on-click-left": "powerprofilesctl set balanced",
+		},
+
+    "clock": {
+				"tooltip-format": "<big>{:%d %b %Y}</big>\n\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%d %b %Y}",
+        "format": "{:%I:%M %p}",
+				"tooltip": true,
+    },
+    "wireplumber": {
+        "format": "Vol = {volume} %",
+				"tooltip": true,
+				"tooltip-format": "{icon} {volume}%",
+        "format-bluetooth": "󰂰 ",
+        "nospacing": 1,
+        "format-muted": "󰝟 ",
+        "format-icons": {
+            "headphone": " ",
+            "default": ["󰖀","󰕾 "," "],
+            "headset": " ",
+        },
+        "on-click": "pavucontrol",
+        "scroll-step": 1
+    },
+    "custom/logo": {
+        "format": "💻 ARCH BTW",
+        "tooltip-format": "SUPER + H",
+				"on-click": "alacritty -e sh ~/.config/hypr/menu/update.sh",
+    },
+    "battery": {
+				"format": "<span color='#3cb371'>{capacity}%</span> <span color='#BF00FF'>{icon}</span>",
+        "format-icons": {
+            "charging": [
+                "󰢜",
+                "󰂆",
+                "󰂇",
+                "󰂈",
+                "󰢝",
+                "󰂉",
+                "󰢞",
+                "󰂊",
+                "󰂋",
+                "󰂅"
+            ],
+            "default": [
+                "󰁺",
+                "󰁻",
+                "󰁼",
+                "󰁽",
+                "󰁾",
+                "󰁿",
+                "󰂀",
+                "󰂁",
+                "󰂂",
+                "󰁹"
+            ]
+        },
+        "format-full": "Charged ",
+        "interval": 5,
+				"on-click": "alacritty -e battop"
+    },
+    
+    "custom/power": {
+				"format": "<span color='#f38ba8'>󰤆</span>",
+        "tooltip": true,
+        "on-click": "rofi -show power-menu -modi power-menu:rofi-power-menu",
+				"tooltip-format": "Power Menu"
+    },
+    
+    "custom/ani-cli":{
+        "on-click": "alacritty -e sh ~/.config/waybar/scripts/ani-cli.sh",
+				"format":"<span color='#ff0000'> </span>Ani-cli",
+				"tooltip": false,
+    },
+
+    "backlight":{
+        "device": "{}",
+				"exec": "ls /sys/class/backlight",
+				"format": "{percent}% <span color='#FFD700'>{icon}</span>",
+				"tooltip-format": "Brightness: {}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+				"on-click": "notify-send -t 4000 'Keep Your Brightness Level Between 20 to 30 to Save The Battery Life For Nearly 4 Hours'"
+    },
+    
+		"custom/temperature": {
+			"exec": "sensors | awk '/^Package id 0:/ {print int($4)}'",
+			"format": "<span color='#FFA500'> </span>{}°C",
+			"interval": 2,
+			"tooltip": false,
+		},
+
+    "custom/diskspace":{
+				"format": "<span color='#33cb37'>  </span><span color='#cdd6f4'>{}iB</span>",
+				"interval": 200,
+				"exec": "~/.config/waybar/scripts/disk_script.sh",
+				"on-click": "alacritty -e ncdu / --exclude /media --exclude /run/timeshift",
+				"tooltip": false,
+    },
+
+		"group/tray_row": {
+				"orientation": "inherit",
+				"drawer": {
+					"transition-duration": 1000,
+				},
+				"modules": [
+					"custom/expand-icon",
+					"tray",
+				],
+		},
+		"custom/expand-icon": {
+			"format": "   ",
+			"tooltip": false
+		},
+
+}

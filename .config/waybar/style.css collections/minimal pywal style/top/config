@@ -1,0 +1,183 @@
+{
+  "layer": "top",
+  "position": "top",
+	"height": 36,
+	"spacing": 6,
+	"margin-left": 56,
+	"margin-right": 56,
+	"margin-top": 4,
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+
+  "modules-center": [
+    "clock"
+  ],
+
+  "modules-right": ["group/tray-expander","custom/update","wireplumber","backlight","power-profiles-daemon","battery","custom/power",],
+
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+    },
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
+    }
+  },
+	"power-profiles-daemon": {
+		"format": "{icon}",
+		"tooltip-format": "Power profile: {profile}\nDriver : {driver}",
+		"tooltip": true,
+		"format-icons": {
+		"performance": "",
+		"balanced": " ",
+		"power-saver": " ",
+		},
+		"on-click": "powerprofilesctl set power-save",
+		"on-click-right": "powerprofilesctl set performance",
+		"on-click-left": "powerprofilesctl set balanced",
+	},
+
+	"custom/update": {
+		"format": "💻",
+		"tooltip-format": "SUPER + H",
+		"on-click": "alacritty -e sh ~/.config/hypr/menu/update.sh",
+	},
+
+  "clock": {
+    "format": "{:%A %H:%M}",
+    "format-alt": "{:%d %B %Y}",
+    "tooltip": false,
+  },
+
+	"battery": {
+		"format": "{capacity}% {icon}",
+		"format-icons": {
+				"charging": [
+						"󰢜",
+						"󰂆",
+						"󰂇",
+						"󰂈",
+						"󰢝",
+						"󰂉",
+						"󰢞",
+						"󰂊",
+						"󰂋",
+						"󰂅"
+				],
+				"default": [
+						"󰁺",
+						"󰁻",
+						"󰁼",
+						"󰁽",
+						"󰁾",
+						"󰁿",
+						"󰂀",
+						"󰂁",
+						"󰂂",
+						"󰁹"
+				]
+		},
+		"format-full": "Charged ",
+		"interval": 5,
+		"on-click": "alacritty -e battop"
+	},
+  "wireplumber": {
+    "format": "{icon}",
+    "on-click": "pavucontrol",
+    "tooltip-format": "Playing at {volume}%",
+    "scroll-step": 1,
+    "format-muted": "󰝟",
+    "format-icons": {
+      "default": ["", "", ""],
+			"headphone": " ",
+			"headset": " ",
+    }
+  },
+  "group/tray-expander": {
+    "orientation": "inherit",
+    "drawer": {
+			"transition-duration": 800,
+			"transition-left-to-right": true,
+			"children-class": "tray-group-item"
+    },
+    "modules": [
+      "custom/expand-icon",
+			"custom/aur",
+			"custom/temperature",
+			"custom/diskspace",
+			"custom/ani-cli",
+			"tray",
+    ]
+  },
+
+  "custom/expand-icon": {
+    "format": " ",
+    "tooltip": false
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 15,
+  },
+
+	"custom/power": {
+		"format": "󰤆",
+		"tooltip": true,
+		"on-click": "rofi -show power-menu -modi power-menu:rofi-power-menu",
+		"tooltip-format": "Power Menu"
+	},
+
+	"backlight":{
+		"device": "{}",
+		"exec": "ls /sys/class/backlight",
+		"format": "{icon}",
+		"tooltip-format": "Brightness: {}%",
+		"format-icons": ["", "", "", "", "", "", "", "", ""],
+		"on-click": "notify-send -t 4000 'Keep Your Brightness Level Between 20 to 30 to Save The Battery Life For Nearly 4 Hours'"
+	},
+
+	"custom/aur": {
+		"format": " {}",
+		"exec": "pacman -Qu | wc -l",
+		"tooltip": false,
+		"interval": 5,
+	},
+
+	"custom/ani-cli":{
+		"on-click": "alacritty -e sh ~/.config/waybar/scripts/ani-cli.sh",
+		"format":"",
+		"tooltip": false,
+	},
+
+	"custom/temperature": {
+		"exec": "sensors | awk '/^Package id 0:/ {print int($4)}'",
+		"format": " {}°C",
+		"interval": 2,
+		"tooltip": true,
+	},
+
+	"custom/diskspace":{
+		"format": " ",
+		"interval": 200,
+		"exec": "~/.config/waybar/scripts/disk_script.sh",
+		"on-click": "alacritty -e ncdu / --exclude /media --exclude /run/timeshift",
+		"tooltip": false,
+	},
+
+
+}

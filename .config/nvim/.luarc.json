@@ -1,0 +1,40 @@
+{
+    "diagnostics.globals": [
+        "opts",
+        "vim",
+        "server",
+        "language",
+        "lua",
+        "bin",
+        "mason",
+        "nvim",
+        "share",
+        "dap",
+        "defaults",
+        "cr",
+        "o",
+        "r",
+        "blinkon250",
+        "Cursor",
+        "ci",
+        "ve",
+        "blinkoff400",
+        "lCursor",
+        "sm",
+        "i",
+        "a",
+        "c",
+        "n",
+        "v",
+        "null_ls",
+        "lint_augroup",
+        "componentcustom_moonfly",
+        "cyan",
+        "none"
+    ],
+    "diagnostics.disable": [
+        "unused-local",
+        "redundant-value",
+        "need-check-nil"
+    ]
+}

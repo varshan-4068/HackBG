@@ -1,0 +1,158 @@
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+@import "~/.cache/current_wallpaper.rasi"
+
+* {
+	font: "Jetbrains Mono Bold 11";
+	height: 420px;
+}
+
+configuration {
+    modi: "drun,filebrowser,run";
+		display-drun: "Apps";
+    display-filebrowser: "Files";
+    display-run: "Process";
+    show-icons: true;
+    hover-select:true;
+		location : 0;
+}
+
+imagebox {
+    padding: 20px;
+		margin: 12px;
+    background-color: transparent;
+    orientation: vertical;
+		children: [ "inputbar", "dummy", "mode-switcher" ];
+		border-radius: 4px;
+}
+
+dummy {
+		background-color: transparent;
+}
+
+mode-switcher {
+    padding: 10px;
+		spacing: 10px;
+    background-color: transparent;
+		text-color: @foreground;
+}
+
+button {
+		cursor: pointer;
+    border-radius:  2px;
+		padding:15px;
+    background-color: @background;
+    text-color: @foreground;
+}
+
+button selected {
+    background-color: @foreground;
+    text-color: @background;
+}
+
+listbox {
+    orientation: vertical;
+    children: [ "listview"];
+    background-color: transparent;
+}
+
+listview {
+    columns: 1;
+    lines: 8;
+    scrollbar: true;
+		padding: 20px;
+		cycle: false;
+		layout: vertical;
+		spacing: 5px;
+		border: none;
+		reverse: false;
+}
+
+scrollbar{
+		background-color: #000000;
+		text-color: @foreground;
+		handle-color: @foreground;
+		handle-width: 8px;
+}
+
+window {
+    width: 930px;
+		border: 2px solid;
+		border-color: @background;
+    background-color: #000000CC;
+		padding: 0px;
+}
+
+inputbar {
+		enabled: true;
+    spacing: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: @background;
+    text-color:  @background;
+    children:[ "textbox-prompt-colon", "entry" ];
+}
+
+textbox-prompt-colon {
+    enabled: true;
+    expand: false;
+    str: "";
+    background-color: transparent;
+}
+
+entry {
+		enabled: true;
+    text-color: @foreground;
+    cursor: text;
+    placeholder: "Search";
+    placeholder-color: @foreground;
+}
+
+mainbox {
+    spacing: 20px;
+		orientation: horizontal;
+    background-image: @wallpaper;
+    margin: 0;
+		children: [ "imagebox","listbox" ];
+}
+
+element {
+    spacing: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: transparent;
+    text-color: transparent;
+}
+
+element normal.normal {
+	background-color: transparent;
+	text-color: @foreground;
+}
+
+element alternate.normal {
+	text-color: @foreground;
+	background-color: transparent;
+}
+
+element selected.active {
+	background-color: @urgent-background;
+	text-color: @background;
+	border-radius: 2px;
+	border: 4px;
+	border-color: #000000;
+}
+
+element selected.normal {
+	background-color: @urgent-background;
+	text-color: @background;
+	border-radius: 2px;
+	border-color: @background;
+	border: 1px solid;
+}
+
+message {
+    background-color: #f38ba8;
+    border: 2 px solid;
+	border-color: #3cb371;
+}
+
+
