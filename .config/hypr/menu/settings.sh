@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-select=$(echo -e "Animations\nInstall\nDefault\nBack\nQuit" | gum choose --header="Settings Menu: ")
+select=$(echo -e "Animations\nInstall\nDefault\nUninstall\nBack\nQuit" | gum choose --header="Settings Menu: ")
 menu=~/.config/hypr/menu
 
 case "$select" in
@@ -12,6 +12,9 @@ case "$select" in
 		;;
 	Default)
 		sh $menu/default.sh
+		;;
+	Uninstall)
+		sh $menu/uninstall.sh
 		;;
 	Back)
 		sh $menu/update.sh

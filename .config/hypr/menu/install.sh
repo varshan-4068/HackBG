@@ -56,6 +56,6 @@ echo "Desktop entry created:"
 echo "$DESKTOP_FILE"
 
 echo "$APP_NAME" >> $LOGFILE
-
+echo
 read -rp "Press Enter to Escape"
 echo && exec ~/.config/hypr/menu/update.sh
