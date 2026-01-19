@@ -84,7 +84,7 @@ To Install my Dotfiles,etc Run the commands below....
 
     git clone https://github.com/varshan-4068/HackBG.git
     sudo pacman -S gum timeshift 
-    cd Hypr-dots/
+    cd HackBG/
     chmod +x setup-arch.sh
     ./setup-arch.sh
 
