@@ -15,7 +15,6 @@ dependencies=(
 	systemctl-tui								 #tui for managing systemd services	
 	grub-btrfs  								 #btrfs snapshots on grub menu
 	wireshark-qt 								 #network analyser
-	iwconfig 										 #configure a wireless network interface
 	burpsuite										 #burpsuite tool community free edition
 	gum                          #dependencies for running install script
 	base-devel                   #basic packages
