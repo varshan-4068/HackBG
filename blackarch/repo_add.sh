@@ -3,11 +3,11 @@
 blackarch_install(){
 		if [ -f /usr/bin/curl ];then
 			curl -fsSLO https://blackarch.org/strap.sh   
-			sudo cp ~/Hypr-dots/conf/pacman.conf /etc
+			sudo cp ~/HackBG/conf/pacman.conf /etc
 		else
 			sudo pacman -S curl
 			curl -fsSLO https://blackarch.org/strap.sh   
-			sudo cp ~/Hypr-dots/conf/pacman.conf /etc
+			sudo cp ~/HackBG/conf/pacman.conf /etc
 		fi
 
 		if [ $? -eq 0 ];then
