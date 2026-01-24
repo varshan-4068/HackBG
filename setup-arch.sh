@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 #install scripts directory
-dot_dir=$HOME/Hypr-dots/src
+dot_dir=$HOME/HackBG/src
 
-virt_dir=$HOME/Hypr-dots/qemu
+virt_dir=$HOME/HackBG/qemu
 
-plugin_dir=$HOME/Hypr-dots/plugins
+plugin_dir=$HOME/HackBG/plugins
 
-blackarch_dir=$HOME/Hypr-dots/blackarch/
+blackarch_dir=$HOME/HackBG/blackarch/
 
 Error() {
 	WARNING="$(tput setaf 1)"

@@ -37,7 +37,7 @@ install_dots() {
 		bash=mybash/
 		user=$(whoami)
 
-		cd Hypr-dots/ || return
+		cd HackBG/ || return
 		gum spin --spinner line --title="Installing the configs Wait a few Seconds :: " sleep 1
 		cp -r .config/ ~
 		cd conf/ || return
@@ -75,7 +75,7 @@ install_dots() {
 			echo -e "\n[+] Installation script is running on tty so manually set wallpaper after Installation of the script"
 		fi
 		echo -e "\n[+] Installing the default needed extensions for vscodium"
-		sh ~/Hypr-dots/src/vscodium.sh
+		sh ~/HackBG/src/vscodium.sh
 		echo -e "\n[+] Initialising manpage databases\n"
 	  sudo mandb 2>/dev/null
 		echo -e "\n[+] Copied and Initialised Dotfiles and themes successfully ::"

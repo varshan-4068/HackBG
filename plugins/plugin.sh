@@ -40,7 +40,7 @@ plugin(){
 			echo
 			echo "[+] Copying needed configuration files to ~/.config/hypr/"
 			echo
-			cp ~/Hypr-dots/plugins/plugins.conf ~/.config/hypr/
+			cp ~/HackBG/plugins/plugins.conf ~/.config/hypr/
 			echo
 			echo "[+] Adding https://github.com/hyprwm/hyprland-plugins to hyprpm"
 			echo

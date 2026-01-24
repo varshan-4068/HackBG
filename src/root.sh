@@ -32,9 +32,9 @@ root_dots() {
 	yes)
 
 		cd ~ || return
-		cd Hypr-dots/ || return
+		cd HackBG/ || return
 		echo
-		echo "[+] Entered the Hypr-dots Directory ::"
+		echo "[+] Entered the HackBG Directory ::"
 		echo
 		cd root/ || return
 		sudo cp .bashrc .bash_profile /root

@@ -40,7 +40,7 @@ sddm_themes() {
 	case "$sddm_theme" in
 	S)
 		echo
-		sudo cp ~/Hypr-dots/sddm/sddm.conf /etc
+		sudo cp ~/HackBG/sddm/sddm.conf /etc
 		echo "[+] Copied sddm.conf to /etc"
 		sh -c "$(curl -fsSL https://raw.githubusercontent.com/keyitdev/sddm-astronaut-theme/master/setup.sh)"
 		if [ -d "/usr/share/sddm/themes/sddm-astronaut-theme" ]; then
@@ -54,9 +54,9 @@ sddm_themes() {
 		;;
 	M)
 		echo
-		sudo cp ~/Hypr-dots/sddm/sddm.conf /etc
+		sudo cp ~/HackBG/sddm/sddm.conf /etc
 		echo "[+] Copied sddm.conf to /etc"
-		sudo cp -r ~/Hypr-dots/sddm/sddm-theme/ /usr/share/sddm/themes/
+		sudo cp -r ~/HackBG/sddm/sddm-theme/ /usr/share/sddm/themes/
 		echo 
 		echo "[+] Copied sddm-theme/ to /usr/share/share/sddm/themes/"
 		gum spin --spinner line --title="Installing the maldives Inspired sddm theme.." sleep 3.8
@@ -86,15 +86,15 @@ sddm_enable() {
 
 delete() {
 
-	gum confirm "Do u wanna delete the directory Hypr-dots/ that has been cloned to your system? (y/n): " && del="yes" || del="no"
+	gum confirm "Do u wanna delete the directory HackBG/ that has been cloned to your system? (y/n): " && del="yes" || del="no"
 
 	case "$del" in
 	yes)
 		cd ~ || return
-		sudo rm -r Hypr-dots/
+		sudo rm -r HackBG/
 		echo
 		echo
-		echo "[+] Deleted the Hypr-dots/ directory successfully ::"
+		echo "[+] Deleted the HackBG/ directory successfully ::"
 		echo
 		echo
 		sleep 1.2
