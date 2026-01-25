@@ -36,7 +36,7 @@ _install_browser() {
 	selected=$(printf "%s\n" "${browser[@]}" | gum choose --no-limit --header "Select optional browsers to install: ")
 
 	if [ -z "$selected" ]; then
-		sh ~/Hypr-dots/src/browser.sh
+		sh ~/HackBG/src/browser.sh
 	fi
 
 	echo -e "\n[+] You had selected:\n\n$selected\n"

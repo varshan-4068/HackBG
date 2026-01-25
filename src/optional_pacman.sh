@@ -37,7 +37,7 @@ _install_optional() {
 	selected=$(printf "%s\n" "${optional[@]}" | gum choose --no-limit --header "Select the needed optional packages to install: ")
 
 	if [ -z "$selected" ]; then
-		sh ~/Hypr-dots/src/optional_pacman.sh
+		sh ~/HackBG/src/optional_pacman.sh
 	fi
 
 	echo -e "\n[+] You had selected:\n$selected"

@@ -40,7 +40,6 @@ dependencies=(
 	blackarch-officials					 #most popular blacharch tools
 	make                         #dependencies
 	alacritty                    #terminal
-	kitty                        #gpu based rendering terminal
 	python                       #needed for running python script
 	starship                     #gives beautiful look for the shell prompt
 	npm                          #must for installing nvim plugins like lsp formatters,etc
