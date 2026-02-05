@@ -1,0 +1,25 @@
+general.import = ["~/.config/alacritty/colors.toml"]
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+padding.x = 30
+padding.y = 20
+dynamic_padding = false
+decorations = "full"
+opacity = 0.98
+blur = true
+
+[font]
+size = 10.6
+normal.family = "jetbrains mono nerd font"
+
+[cursor]
+style.shape = "block"
+style.blinking = "off"
+vi_mode_style = "None"
+unfocused_hollow = false
+
+[mouse]
+hide_when_typing = false 

@@ -1,0 +1,185 @@
+{
+	"layer": "bottom",
+	"position": "bottom",
+	
+	"modules-left": ["custom/theme","memory","custom/disk","custom/temperature","group/tray_row"],
+	"modules-center": ["hyprland/workspaces",],
+	"modules-right": ["power-profiles-daemon","custom/ani","wireplumber","battery","backlight","clock","custom/power",],
+
+
+	"hyprland/workspaces": {
+			"on-scroll-up": "hyprctl dispatch workspace -1",
+			"on-scroll-down": "hyprctl dispatch workspace +1",
+			"format": "{icon}",
+			"format-icons": {
+				"1": "",
+				"2": "",
+				"3": "󰖳",
+				"4": "󰈹",
+				"5": "",
+				"6": "",
+				"7": "󰇮",
+				"8": "",
+			},
+			"persistent-workspaces": {
+				"*":[1,2,3,4,5,6]
+			},
+	},
+
+	"custom/seperator": {
+		"format": " | ",
+	},
+
+	"tray": {
+		"spacing": 20,
+	},
+	
+	"tray":{
+			"spacing": 15,
+	},
+
+	"custom/aur": {
+		"format": "<span color='#ff0371'> </span>{} ",
+		"exec": "pacman -Qu | wc -l",
+		"tooltip": false,
+		"interval": 5,
+	},
+
+	"power-profiles-daemon": {
+			"format": "{icon}   ",
+			"tooltip-format": "Power profile: {profile}\nDriver : {driver}",
+			"tooltip": true,
+			"format-icons": {
+			"performance": "<span color='#c0669d'> </span>",
+			"balanced": " <span color='#f38b28'></span>",
+			"power-saver": "<span color='#3cb371'> </span>",
+			},
+			"on-click": "powerprofilesctl set power-save",
+			"on-click-right": "powerprofilesctl set performance",
+			"on-click-left": "powerprofilesctl set balanced",
+	},
+
+	"memory":{
+		"interval": 5,
+		"format": "<span color='#800000'>  </span> {used:0.1f} GB",
+		"tooltip": true,
+		"min-length": 2,
+		"on-click": "alacritty -e btop",
+		"tooltip-format": " {used:0.1f}GB/{total:0.1f}GB"
+	},
+
+ "clock": {
+		"tooltip-format": "{calendar}",
+		"format-alt": "{:%d %b %Y}",
+		"format": "{:%I:%M %p}",
+		"tooltip": true,
+	},
+
+ "wireplumber": {
+		"format": "Vol = {volume} %",
+		"tooltip": true,
+		"tooltip-format": "Volume : {volume}%",
+		"format-bluetooth": "󰂰 ",
+		"nospacing": 1,
+		"format-muted": "󰝟 ",
+		"format-icons": {
+				"headphone": " ",
+				"default": ["󰖀","󰕾 "," "]
+		},
+		"on-click": "pavucontrol",
+		"scroll-step": 1
+	},
+
+	"custom/theme":{
+		"format": "  ARCH BTW ",
+		"tooltip-format": "SUPER + H",
+		"on-click": "alacritty -e sh ~/.config/hypr/menu/update.sh"
+	},
+
+	"battery": {
+			"format": "<span color='#3cb371'>{capacity}%</span> <span color='#BF00FF'>{icon}</span>",
+			"format-icons": {
+					"charging": [
+							"󰢜",
+							"󰂆",
+							"󰂇",
+							"󰂈",
+							"󰢝",
+							"󰂉",
+							"󰢞",
+							"󰂊",
+							"󰂋",
+							"󰂅"
+					],
+					"default": [
+							"󰁺",
+							"󰁻",
+							"󰁼",
+							"󰁽",
+							"󰁾",
+							"󰁿",
+							"󰂀",
+							"󰂁",
+							"󰂂",
+							"󰁹"
+					]
+			},
+			"format-full": "<span color='#6C23A6'>Charged </span>",
+			"interval": 5,
+			"on-click": "alacritty -e battop"
+	},
+    
+	"custom/power": {
+			"format": "<span color='#f38ba8'>󰤆</span>",
+			"tooltip": true,
+			"on-click": "rofi -show power-menu -modi power-menu:rofi-power-menu",
+			"tooltip-format": "Power Menu"
+	},
+
+	
+	"backlight":{
+			"device": "{}",
+			"exec": "ls /sys/class/backlight",
+			"format": "{percent}% <span color='#FFD700'>{icon}</span>",
+			"tooltip-format": "Brightness: {}%",
+			"format-icons": ["", "", "", "", "", "", "", "", ""],
+			"on-click": "notify-send -t 4000 'Keep Your Brightness Level Between 20 to 30 to Save The Battery Life For Nearly 4 Hours'"
+	},
+
+	"custom/disk":{
+		"format": "<span color='#33cb37'>  </span><span color='#cdd6f4'>{}iB</span>",
+		"interval": 200,
+		"exec": "~/.config/waybar/scripts/disk_script.sh",
+		"on-click": "alacritty -e ncdu / --exclude /media --exclude /run/timeshift",
+		"tooltip": false,
+	},
+ 
+  "custom/temperature": {
+    "exec": "sensors | awk '/^Package id 0:/ {print int($4)}'",
+    "format": "<span color='#FFA500'> </span>{}°C ",
+    "interval": 2,
+    "tooltip": false,
+	},
+
+	"custom/ani": {
+		"on-click": "alacritty -e sh ~/.config/waybar/scripts/ani-cli.sh",
+		"format":"<span color='#ff0000'> </span> ",
+		"tooltip": false,
+	},
+	"group/tray_row": {
+		"orientation": "inherit",
+		"drawer": {
+			"transition-duration": 1000,
+		},
+		"modules": [
+			"custom/expand-icon",
+			"tray",
+			"custom/aur",
+		],
+	},
+	"custom/expand-icon": {
+		"format": "    ",
+		"tooltip": false
+	},
+
+}

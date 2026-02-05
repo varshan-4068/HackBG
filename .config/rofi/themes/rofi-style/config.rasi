@@ -1,0 +1,137 @@
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+* {
+	font: "Jetbrains Mono Bold 11";
+	background: rgba(0,0,0,1);
+}
+
+configuration {
+    modi: "drun,filebrowser,run";
+		display-drun: "Apps";
+    display-filebrowser: "Files";
+    display-run: "Process";
+    show-icons: true;
+    hover-select:true;
+}
+
+
+mode-switcher {
+    padding: 20px;
+		spacing: 10px;
+    background-color: transparent;
+		orientation: horizontal;
+}
+
+button {
+		border: 2px solid;
+		border-color: @urgent-background;
+		padding: 5px;
+    background-color: @background;
+    text-color: @urgent-background;
+}
+
+button selected {
+    background-color: @urgent-background;
+    text-color: #000000;
+}
+
+listbox {
+    children: ["inputbar","listview","mode-switcher"];
+    background-color: @background;
+}
+
+listview {
+    columns: 1;
+    lines: 8;
+    scrollbar: true;
+		padding: 10px;
+		cycle: false;
+		layout: vertical;
+		spacing: 8px;
+		border: none;
+		reverse: false;
+}
+
+scrollbar{
+		background-color: @background;
+		text-color: @foreground;
+		handle-color: @foreground;
+		handle-width: 8px;
+}
+
+window {
+    width: 400px;
+    border-radius: 4px;
+		border : 2px solid; 
+		margin: 35px;
+		border-color : @urgent-background;
+    background-color: transparent;
+    padding: 0px;
+	  location : south;
+}
+
+inputbar {
+		enabled: true;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: @background;
+		margin: 12px;
+    text-color:  @foreground;
+    children:[ "textbox-prompt-colon", "entry" ];
+}
+
+textbox-prompt-colon {
+    enabled: true;
+    expand: false;
+    str: "";
+    background-color: transparent;
+}
+
+entry {
+		enabled: true;
+    text-color: @foreground ;
+    cursor: text;
+    placeholder: "Search";
+    placeholder-color: @foreground;
+}
+
+mainbox {
+    spacing: 20px;
+		orientation: horizontal;
+    margin: 0;
+    padding: 8px;
+		children: ["listbox"];
+}
+
+element {
+    spacing: 15px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: transparent;
+}
+
+element normal.normal {
+	background-color: transparent;
+}
+
+element alternate.normal {
+	background-color: transparent;
+}
+	
+element selected.active {
+	text-color: #000000;
+}
+
+element selected.normal {
+	text-color: @urgent-background;
+	border: 2px solid;
+	border-color: @urgent-background;
+	background-color: transparent;
+}
+
+error-message {
+	text-color: #000000;
+	padding : 10px;
+}
+
+

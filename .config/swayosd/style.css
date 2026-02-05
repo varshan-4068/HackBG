@@ -1,0 +1,24 @@
+window {
+  border-radius: 20;
+  opacity: 0.9;
+  border: 1px solid #ffffff;
+  background-color: #000000;
+}
+
+label {
+  font-family: 'JetbrainsMono Nerd Font';
+  font-size: 11px;
+  color: #ffffff;
+}
+
+image {
+  color: #ffffff;
+}
+
+progressbar {
+  border-radius: 20;
+}
+
+progress {
+  background-color: #ffffff;
+}
