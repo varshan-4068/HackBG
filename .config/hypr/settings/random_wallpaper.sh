@@ -38,4 +38,8 @@ wal -q -e -i "$WALLPAPER" -n
 
 sh ~/.config/hypr/settings/wallpaper_fetch.sh
 
+if command -v pywalfox >/dev/null;then
+	pywalfox update
+fi
+
 killall -SIGUSR2 waybar
